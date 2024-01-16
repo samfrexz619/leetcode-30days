@@ -7,6 +7,7 @@ increment() increases the current value by 1 and then returns it.
 decrement() reduces the current value by 1 and then returns it.
 reset() sets the current value to init and then returns it.
 */
+// Counter II
 const createCounter = function(init) {
   let currVal = init;
 
@@ -51,5 +52,24 @@ const expect = function(val) {
   }
 };
 
-console.log(expect(5).toBe(5))
-console.log(expect(5).notToBe(5))
+// console.log(expect(5).toBe(5))
+// console.log(expect(5).notToBe(5))
+
+/*
+Given an integer n, return a counter function. This counter function initially returns n and then returns 1 more than the previous value every subsequent time it is called (n, n + 1, n + 2, etc).
+*/
+// COUNTER
+const createCounter1 = function(n) {
+    
+  return function() {
+      const a = n
+      n+= 1
+      return a
+  };
+};
+
+ 
+const counter1 = createCounter1(10)
+console.log(counter1())
+console.log(counter1())
+console.log(counter1())
