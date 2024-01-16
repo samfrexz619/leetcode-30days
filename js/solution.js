@@ -67,9 +67,41 @@ const createCounter1 = function(n) {
       return a
   };
 };
-
  
 const counter1 = createCounter1(10)
 console.log(counter1())
 console.log(counter1())
 console.log(counter1())
+
+/**
+ * Given an integer array arr and a mapping function fn, return a new array with a transformation applied to each element.
+
+The returned array should be created such that returnedArray[i] = fn(arr[i], i).
+
+Please solve it without the built-in Array.map method.
+ */
+// Apply Transform Over Each Element in Array
+const plusone = (n)=> {
+  return n + 1
+}
+
+const plusI = (n, i) => {
+  return n + i
+}
+
+const constant = () => {
+  return 42;
+}
+
+let fn = constant
+const map = function(arr, fn) {
+  const returnedArr = [];
+  for(let i = 0; i < arr.length; i++) {
+    returnedArr.push(fn(arr[i], i));
+  }
+  return returnedArr;
+}
+
+const arr1 = [1, 2, 3];
+const arr2 = map(arr1, fn);
+console.log(arr2)
