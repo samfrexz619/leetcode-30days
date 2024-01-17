@@ -19,9 +19,9 @@ const createCounter = function(init) {
 }
 
 const counter = createCounter(5)
-console.log(counter.increment())
-console.log(counter.reset())
-console.log(counter.decrement())
+// console.log(counter.increment())
+// console.log(counter.reset())
+// console.log(counter.decrement())
 
 
 /*
@@ -69,9 +69,9 @@ const createCounter1 = function(n) {
 };
  
 const counter1 = createCounter1(10)
-console.log(counter1())
-console.log(counter1())
-console.log(counter1())
+// console.log(counter1())
+// console.log(counter1())
+// console.log(counter1())
 
 /**
  * Given an integer array arr and a mapping function fn, return a new array with a transformation applied to each element.
@@ -104,7 +104,7 @@ const map = function(arr, fn) {
 
 const arr1 = [1, 2, 3];
 const arr2 = map(arr1, fn);
-console.log(arr2);
+// console.log(arr2);
 
 /**
  * Given an integer array arr and a filtering function fn, return a filtered array filteredArr.
@@ -115,22 +115,25 @@ filteredArr should only contain the elements from the arr for which the expressi
 Please solve it without the built-in Array.filter method.
  */
 //  Filter Elements from Array
-const greaterThan10 = (num) => {
-  return num > 10 
+class filtered {
+
+  greaterThan10 = (num) => {
+    return num > 10 
+  }
+
+  fn = this.greaterThan10;
+
+  filter = function(arr, fn) {
+    const filteredArr = []
+    for(let i = 0; i < arr.length; i++){
+      if(fn(arr[i], i)) {
+        filteredArr.push(arr[i])
+      }
+    }
+    return filteredArr;
+  }
 }
 
-let fn = greaterThan10;
-
-const filter = function(arr, fn) {
-  const filteredArr = [];
-  for(let i = 0; i < arr.length; i++){
-    if(fn(arr[i], i)){
-      filteredArr.push(arr[i]);
-    }
-  }
-  return filteredArr ;
-};
-
-const arr = [0,10,20,30]
-const newArray = filter(arr, fn)
-console.log(newArray)
+const arr = [3, 4, 50, 90]
+const newArr = new filtered()
+console.log(newArr.filter(arr, newArr.fn))
