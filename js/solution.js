@@ -93,7 +93,7 @@ const constant = () => {
   return 42;
 }
 
-let fn = constant
+let fn = plusone
 const map = function(arr, fn) {
   const returnedArr = [];
   for(let i = 0; i < arr.length; i++) {
@@ -104,4 +104,33 @@ const map = function(arr, fn) {
 
 const arr1 = [1, 2, 3];
 const arr2 = map(arr1, fn);
-console.log(arr2)
+console.log(arr2);
+
+/**
+ * Given an integer array arr and a filtering function fn, return a filtered array filteredArr.
+The fn function takes one or two arguments:
+arr[i] - number from the arr
+i - index of arr[i]
+filteredArr should only contain the elements from the arr for which the expression fn(arr[i], i) evaluates to a truthy value. A truthy value is a value where Boolean(value) returns true.
+Please solve it without the built-in Array.filter method.
+ */
+//  Filter Elements from Array
+const greaterThan10 = (num) => {
+  return num > 10 
+}
+
+let fn = greaterThan10;
+
+const filter = function(arr, fn) {
+  const filteredArr = [];
+  for(let i = 0; i < arr.length; i++){
+    if(fn(arr[i], i)){
+      filteredArr.push(arr[i]);
+    }
+  }
+  return filteredArr ;
+};
+
+const arr = [0,10,20,30]
+const newArray = filter(arr, fn)
+console.log(newArray)
