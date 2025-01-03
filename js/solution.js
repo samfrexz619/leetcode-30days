@@ -8,13 +8,13 @@ decrement() reduces the current value by 1 and then returns it.
 reset() sets the current value to init and then returns it.
 */
 // Counter II
-const createCounter = function(init) {
+const createCounter = function (init) {
   let currVal = init;
 
   return {
-    increment: () => currVal+= 1,
+    increment: () => currVal += 1,
     reset: () => currVal = init,
-    decrement: () => currVal-= 1
+    decrement: () => currVal -= 1
   }
 }
 
@@ -31,24 +31,24 @@ toBe(val) accepts another value and returns true if the two values === each othe
 notToBe(val) accepts another value and returns true if the two values !== each other. If they are equal, it should throw an error "Equal".
 */
 
-const expect = function(val) {
+const expect = function (val) {
   const a = val
   return {
-      toBe: function(val){
-          if(a === val){
-              return true
-          } else {
-              throw new Error('Not Equal')
-          }
-
-      },
-      notToBe: function(val){
-          if(a !== val){
-              return true
-          } else {
-              throw new Error('Equal')
-          }
+    toBe: function (val) {
+      if (a === val) {
+        return true
+      } else {
+        throw new Error('Not Equal')
       }
+
+    },
+    notToBe: function (val) {
+      if (a !== val) {
+        return true
+      } else {
+        throw new Error('Equal')
+      }
+    }
   }
 };
 
@@ -59,15 +59,15 @@ const expect = function(val) {
 Given an integer n, return a counter function. This counter function initially returns n and then returns 1 more than the previous value every subsequent time it is called (n, n + 1, n + 2, etc).
 */
 // COUNTER
-const createCounter1 = function(n) {
-    
-  return function() {
-      const a = n
-      n+= 1
-      return a
+const createCounter1 = function (n) {
+
+  return function () {
+    const a = n
+    n += 1
+    return a
   };
 };
- 
+
 const counter1 = createCounter1(10)
 // console.log(counter1())
 // console.log(counter1())
@@ -81,7 +81,7 @@ The returned array should be created such that returnedArray[i] = fn(arr[i], i).
 Please solve it without the built-in Array.map method.
  */
 // Apply Transform Over Each Element in Array
-const plusone = (n)=> {
+const plusone = (n) => {
   return n + 1
 }
 
@@ -94,9 +94,9 @@ const constant = () => {
 }
 
 let fn = plusone
-const map = function(arr, fn) {
+const map = function (arr, fn) {
   const returnedArr = [];
-  for(let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     returnedArr.push(fn(arr[i], i));
   }
   return returnedArr;
@@ -118,15 +118,15 @@ Please solve it without the built-in Array.filter method.
 class filtered {
 
   greaterThan10 = (num) => {
-    return num > 10 
+    return num > 10
   }
 
   fn = this.greaterThan10;
 
-  filter = function(arr, fn) {
+  filter = function (arr, fn) {
     const filteredArr = []
-    for(let i = 0; i < arr.length; i++){
-      if(fn(arr[i], i)) {
+    for (let i = 0; i < arr.length; i++) {
+      if (fn(arr[i], i)) {
         filteredArr.push(arr[i])
       }
     }
@@ -136,7 +136,7 @@ class filtered {
 
 const arr = [3, 4, 50, 90]
 const newArr = new filtered()
-console.log(newArr.filter(arr, newArr.fn))
+// console.log(newArr.filter(arr, newArr.fn))
 
 /**
  * Given an integer array nums, a reducer function fn, and an initial value init, return the final result obtained by executing the fn function on each element of the array, sequentially, passing in the return value from the calculation on the preceding element.
@@ -157,10 +157,10 @@ class Reduce {
 
   fn = this.sum;
 
-  reduce =(nums, fn, init) => {
+  reduce = (nums, fn, init) => {
     let res = init;
-    for(let i = 0; i < nums.length; i++){
-      if(nums.length > 0){
+    for (let i = 0; i < nums.length; i++) {
+      if (nums.length > 0) {
         res = fn(res, nums[i])
       } else {
         return res;
@@ -168,8 +168,42 @@ class Reduce {
     }
     return res;
   }
-} 
+}
 const reduce = new Reduce()
 const nums = [1]
 const init = 0;
-console.log(reduce.reduce(nums, reduce.fn, init))
+// console.log(reduce.reduce(nums, reduce.fn, init))
+
+/*
+Given an array of integers, calculate the ratios of its elements that are positive, negative, and zero. Print the decimal value of each fraction on a new line with  places after the decimal.
+*/
+const plusMinus = (arr) => {
+  const total = arr.length;
+  let positiveCount = 0;
+  let negativeCount = 0;
+  let zeroCount = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      positiveCount += 1;
+    } else if (arr[i] < 0) {
+      negativeCount += 1;
+    } else {
+      zeroCount += 1
+    }
+  }
+  positiveCount = (positiveCount / total).toFixed(6);
+  negativeCount = (negativeCount / total).toFixed(6);
+  zeroCount = (zeroCount / total).toFixed(6);
+  console.log(positiveCount)
+  console.log(negativeCount)
+  console.log(zeroCount)
+  // return {
+  //   positiveCount,
+  //   negativeCount,
+  //   zeroCount
+  // }
+}
+
+const arr3 = [1, 1, 0, -1, -1]
+console.log(plusMinus(arr3))
