@@ -205,5 +205,17 @@ const plusMinus = (arr) => {
   // }
 }
 
-const arr3 = [1, 1, 0, -1, -1]
-console.log(plusMinus(arr3))
+const arr3 = [-4, 3, -9, 0, 4, 1]
+// console.log(plusMinus(arr3))
+
+/*
+Write a program that prints a staircase of size n.
+*/
+
+const stairCase = (n) => {
+  for (let i = 1; i <= n; i++) {
+    const row = ' '.repeat(n - i) + '#'.repeat(i);
+    console.log(row)
+  }
+}
+stairCase(4)
