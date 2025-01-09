@@ -215,7 +215,43 @@ Write a program that prints a staircase of size n.
 const stairCase = (n) => {
   for (let i = 1; i <= n; i++) {
     const row = ' '.repeat(n - i) + '#'.repeat(i);
-    console.log(row)
+    // console.log(row)
   }
 }
 stairCase(4)
+
+/*
+Given five positive integers, find the minimum and maximum values that can be calculated by summing exactly four of the five integers. Then print the respective minimum and maximum values as a single line of two space-separated long integers.
+*/
+function miniMaxSum(arr) {
+
+  const getMini = () => {
+    let mini = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] < mini) {
+        mini = arr[i]
+      }
+    }
+    return mini;
+  }
+
+  const getMax = () => {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] > max) {
+        max = arr[i]
+      }
+    }
+    return max;
+  }
+
+  const getMinMaxSum = () => {
+    let total = arr.reduce((acc, num) => acc + num, 0);
+    const miniSum = total - getMax(arr);
+    const maxSum = total - getMini(arr)
+    return `${miniSum} ${maxSum}`
+  }
+  return getMinMaxSum()
+}
+
+console.log(miniMaxSum([1, 2, 3, 4, 5]))
